@@ -14,7 +14,14 @@ const rolValido = async(rol = '')=>{
 const camperExistsById = async (id) => {
     const Exists = await Camper.findById(id);
     if (!Exists) {
-        throw new Error(`El id (usuario) no existe ${ id }`);
+        throw new Error(`El id (camper) no existe ${ id }`);
+    }
+}
+
+const camperExistsByIdentificacion = async (NroIdentificacion= '') => {
+    const exist = await Camper.findOne({NroIdentificacion});
+    if (!exist) {
+        throw new Error(`El identificacion (camper) no existe ${ id }`);
     }
 }
 
@@ -64,6 +71,7 @@ const rutaCentroExisteId = async(centro = '')=>{
 
 export {
     rolValido,
+    camperExistsByIdentificacion,
     camperExistsById,
     centroExiste,
     levelExiste,
